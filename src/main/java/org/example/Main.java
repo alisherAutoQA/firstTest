@@ -4,6 +4,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.By;
+
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -14,8 +16,12 @@ public class Main {
         driver.get("https://google.com");
         WebElement input = driver.findElement(By.xpath("//*[@id=\"APjFqb\"]"));
         input.sendKeys("hello");
-        List<WebElement> inputs = driver.findElements(By.xpath("aa"));
+        ArrayList<WebElement> inputs = (ArrayList<WebElement>) driver.findElements(By.tagName("a"));
         System.out.println(inputs.size());
+
+        for (int i = 0; i < inputs.size(); i++) {
+            System.out.println(inputs.get(i).toString());
+        }
 
 
     }
