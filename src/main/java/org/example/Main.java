@@ -1,27 +1,27 @@
 package org.example;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.By;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.time.Duration;
 
 
 public class Main {
     public static void main(String[] args) {
         WebDriver driver = new ChromeDriver();
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
         driver.get("https://google.com");
-        WebElement input = driver.findElement(By.xpath("//*[@id=\"APjFqb\"]"));
-        input.sendKeys("hello");
-        ArrayList<WebElement> inputs = (ArrayList<WebElement>) driver.findElements(By.tagName("a"));
-        System.out.println(inputs.size());
 
-        for (int i = 0; i < inputs.size(); i++) {
-            System.out.println(inputs.get(i).toString());
-        }
+        WebElement elem = (new WebDriverWait(driver, Duration.ofSeconds(10))
+                .until(ExpectedConditions.presenceOfElementLocated(By.tagName("a"))));
+
+
+
 
 
     }
