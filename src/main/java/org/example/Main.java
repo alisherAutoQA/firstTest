@@ -14,15 +14,13 @@ public class Main {
     public static void main(String[] args) {
         WebDriver driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        driver.get("https://google.com");
+        driver.get("https://www.avito.ru/");
 
-        WebElement elem = (new WebDriverWait(driver, Duration.ofSeconds(10))
-                .until(ExpectedConditions.presenceOfElementLocated(By.tagName("a"))));
+        WebElement element = driver.findElement(By.xpath("(//h3[@itemprop='name'])[1]"));
 
-
-        WebElement element = driver.findElement(By.xpath("//textarea[@aria-owns='Alh6id']"));
-        element.sendKeys("hello sup");
-
+        String par = element.getAttribute("outerText");
+        System.out.println(par);
+        element.click();
 
     }
 }
