@@ -14,14 +14,14 @@ public class Main {
     public static void main(String[] args) {
         WebDriver driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-
         driver.get("https://google.com");
 
         WebElement elem = (new WebDriverWait(driver, Duration.ofSeconds(10))
                 .until(ExpectedConditions.presenceOfElementLocated(By.tagName("a"))));
 
 
-
+        WebElement element = driver.findElement(By.xpath("//textarea[@aria-owns='Alh6id']"));
+        element.sendKeys("hello sup");
 
 
     }
