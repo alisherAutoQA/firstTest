@@ -14,14 +14,14 @@ public class Main {
     public static void main(String[] args) {
         WebDriver driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        driver.get("https://www.avito.ru/");
+        driver.get("https://www.avito.ru/all/transport");
 
-        WebElement element = driver.findElement(By.xpath("(//h3[@itemprop='name'])[1]"));
+        WebElement element = driver.findElement(By.cssSelector(".page-title-count-wQ7pG"));
 
-        String par = element.getAttribute("outerText");
+        String par = element.getText();
         System.out.println(par);
-        element.click();
 
+        driver.manage().window().maximize();
     }
 }
 
